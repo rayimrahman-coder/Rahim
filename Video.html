@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video | My Portfolio</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- GLOBAL THEME STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #020c1b;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(123, 44, 191, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(72, 202, 228, 0.2) 0%, transparent 40%);
+            color: #e6f1ff;
+            min-height: 100vh;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(2, 12, 27, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #b08bf8;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a {
+            color: #a8b2d1;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #64ffda;
+        }
+        
+        .nav-links a.active {
+            color: #64ffda;
+        }
+
+        /* --- LAYOUT & TYPOGRAPHY --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #b08bf8, #64ffda);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .container > p {
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- VIDEO SPECIFIC STYLES --- */
+        
+        /* The "Cinema" Frame */
+        .video-frame {
+            background: #020c1b; /* Dark Background */
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #233554; /* Dark Blue Border */
+            box-shadow: 0 0 20px rgba(100, 255, 218, 0.1); /* Soft Cyan Glow */
+            transition: 0.3s;
+            margin-bottom: 40px;
+        }
+
+        /* Glow brighter on hover */
+        .video-frame:hover {
+            box-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
+            border-color: #64ffda;
+        }
+
+        /* Specific Glow for YouTube Section (Red) */
+        .youtube-glow:hover {
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+            border-color: #ff0000;
+        }
+
+        /* Label above the video */
+        .video-header {
+            text-align: left;
+            font-size: 0.9rem;
+            color: #64ffda;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-left: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Fix for iframe/video border */
+        iframe, video {
+            border-radius: 5px;
+            display: block; /* Removes tiny gap at bottom */
+            background: #000;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav { padding: 20px; }
+            .nav-links { display: none; }
+            .container { margin-top: 80px !important; }
+            h1 { font-size: 2.2rem; }
+            iframe { height: 250px; } /* Adjust height for mobile */
+        }
+
+        /* --- NEW ANIMATIONS --- */
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        nav { animation: slideDown 0.8s ease-out; }
+
+        /* Animate Video Frames */
+        .video-frame {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .video-frame:nth-of-type(1) { animation-delay: 0.2s; }
+        .video-frame:nth-of-type(2) { animation-delay: 0.5s; }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">MyPortfolio</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="biodata.html">Biodata</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="video.html" class="active">Video</a> <!-- Active Class -->
+            <a href="comments.html">Comments</a>
+        </div>
+    </nav>
+
+    <div class="container fade-in" style="margin-top: 120px;">
+        <h1><span class="gradient-text">My Video Showcase</span></h1>
+        <p style="color: #a8b2d1; margin-bottom: 40px;">
+            Here are some of my latest multimedia projects and demonstrations.
+        </p>
+        
+        <!-- Local Video Section -->
+      <div>
+            <div class="video-header">
+                <i class="fas fa-file-video"></i> Local Project File
+            </div>
+            
+          
+            <video width="100%" controls poster="https://placehold.co/800x450/020c1b/64ffda?text=Lighting+Bedroom+Preview">
+                <!-- Fallback sample video for preview purposes -->
+                <source src="video/lighting bedroom.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- YouTube Section -->
+        <div class="video-frame youtube-glow">
+            <div class="video-header" style="color: #ff0000;">
+                <i class="fab fa-youtube"></i> YouTube Feature
+            </div>
+            
+            <iframe width="100%" height="400" 
+                src="https://www.youtube.com/embed/O3uyNU70Lco" 
+                title="YouTube video player" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+</body>
+</html>

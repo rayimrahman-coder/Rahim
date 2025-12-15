@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments | My Portfolio</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- GLOBAL THEME STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #020c1b;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(123, 44, 191, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(72, 202, 228, 0.2) 0%, transparent 40%);
+            color: #e6f1ff;
+            min-height: 100vh;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(2, 12, 27, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #b08bf8;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a {
+            color: #a8b2d1;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #64ffda;
+        }
+        
+        /* Highlight Active Link */
+        .nav-links a.active {
+            color: #64ffda;
+        }
+
+        /* --- LAYOUT & TYPOGRAPHY --- */
+        .container {
+            max-width: 600px; /* Narrower for form readability */
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #b08bf8, #64ffda);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .container > p {
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Animation */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- FORM SPECIFIC STYLES --- */
+
+        /* Form Container Style */
+        .cyber-form {
+            text-align: left;
+            background: rgba(17, 34, 64, 0.4);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px -10px rgba(2,12,27,0.7);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        /* Label Styling */
+        label {
+            display: block;
+            color: #64ffda; /* Neon Green Text */
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Input & Textarea Styling (The Glass Look) */
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(2, 12, 27, 0.7); /* Very Dark Background */
+            border: 1px solid #233554; /* Dark Blue Border */
+            border-radius: 8px;
+            color: #ccd6f6; /* Light Text */
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            outline: none; /* Removes default browser outline */
+            transition: 0.3s;
+        }
+
+        /* Focus Effect: Glows when you click inside */
+        input:focus, textarea:focus {
+            border-color: #64ffda;
+            box-shadow: 0 0 15px rgba(100, 255, 218, 0.15);
+            background: rgba(2, 12, 27, 0.9);
+        }
+
+        /* Button Styling */
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, #240046, #3c096c);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(123, 44, 191, 0.6); /* Purple Glow */
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav { padding: 20px; }
+            .nav-links { display: none; }
+            .container { margin-top: 80px !important; }
+            h1 { font-size: 2.2rem; }
+            .cyber-form { padding: 25px; }
+        }
+
+        /* --- NEW ANIMATIONS --- */
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        nav { animation: slideDown 0.8s ease-out; }
+
+        /* Animate the form */
+        .cyber-form {
+            opacity: 0;
+            animation: zoomIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s forwards; /* Bouncy effect */
+        }
+        
+        /* Animate header text */
+        .container > p, h1 {
+            opacity: 0;
+            animation: zoomIn 0.8s ease-out forwards;
+        }
+        .container > p { animation-delay: 0.2s; }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">MyPortfolio</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="biodata.html">Biodata</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="video.html">Video</a>
+            <a href="comments.html" class="active">Comments</a>
+        </div>
+    </nav>
+
+    <div class="container fade-in" style="margin-top: 120px;">
+        
+        <h1><span class="gradient-text">Contact Me</span></h1>
+        <p style="color: #a8b2d1; margin-bottom: 40px;">
+            Have a question or feedback? Drop me a message below!
+        </p>
+        
+        <form action="#" method="post" class="cyber-form">
+            
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message 🚀</button>
+        </form>
+
+    </div>
+
+</body>
+</html>
